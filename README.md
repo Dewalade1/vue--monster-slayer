@@ -1,2 +1,3 @@
-# vue--monster-slayer
-A monster slayer game written in vue
+# Monster Slayer
+
+A small monster slayer game written in Vue
