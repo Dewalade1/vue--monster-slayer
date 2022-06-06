@@ -36,7 +36,7 @@
         <h3 v-else>It's a draw</h3>
         <button @click="startGame">New Game</button>
       </section>
-      <section id="controls">
+      <section id="controls" v-else>
         <button 
           :disabled="winner" 
           @click="attackMonster"
@@ -50,7 +50,7 @@
           SPECIAL ATTACK
         </button>
         <button :disabled="winner" @click="healPlayer">HEAL</button>
-        <button :disabled="winner">SURRENDER</button>
+        <button :disabled="winner" @click="playerSurrender">SURRENDER</button>
       </section>
       <section id="log" class="container">
         <h2>Battle Log</h2>
