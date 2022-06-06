@@ -29,11 +29,27 @@
           <div class="healthbar__value" :style="playerHealthBarStyle"></div>
         </div>
       </section>
+      <section class="container" v-if="winner">
+        <h2 v-if="playerHP">Game Over!</h2>
+        <h3 v-if="winner === 'monster'">You Lost!</h3>
+        <h3 v-else-if="winner === 'player'">You Won!</h3>
+        <h3 v-else>It's a draw</h3>
+      </section>
       <section id="controls">
-        <button @click="attackMonster">ATTACK</button>
-        <button :disabled="specialAttackAvailable" @click="specialAttackMonster">SPECIAL ATTACK</button>
-        <button @click="healPlayer">HEAL</button>
-        <button>SURRENDER</button>
+        <button 
+          :disabled="winner" 
+          @click="attackMonster"
+        >
+          ATTACK
+        </button>
+        <button 
+          :disabled="specialAttackAvailable" 
+          @click="specialAttackMonster"
+        >
+          SPECIAL ATTACK
+        </button>
+        <button :disabled="winner" @click="healPlayer">HEAL</button>
+        <button :disabled="winner">SURRENDER</button>
       </section>
       <section id="log" class="container">
         <h2>Battle Log</h2>
