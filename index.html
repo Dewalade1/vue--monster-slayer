@@ -62,9 +62,13 @@
               {{ log.agent === 'player' ? 'Player' : 'Monster' }}</span>
             <span v-if="log.action === 'heal'"> 
               heals self for 
-              <span class="log--heal">{{ log.actionPoints }} pts HP</span>
+              <span class="log--heal">{{ log.actionPoints }} pts</span> HP
             </span>
-            <span v-else> attacks and deals <span class="log--damage">{{ log.actionPoints}}</span> pts damage</span>
+            <span v-else> 
+              attacks and deals 
+              <span class="log--damage">{{ log.actionPoints}} pts</span>
+              damage
+          </span>
           </li>
         </ul>
       </section>

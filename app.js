@@ -23,19 +23,19 @@ const app = Vue.createApp({
             this.currentRound++
             const attackPoints = getRandomVal(5, 12);
             this.monsterHP -= attackPoints;
-            this.addLogMessage("player", "attack", attackPoints)
+            this.addBattleLog("player", "attack", attackPoints);
             this.attackPlayer();
         },
         attackPlayer () {
             const attackPoints = getRandomVal(8, 15);
             this.playerHP -= attackPoints;
-            this.addLogMessage("monster", "attack", attackPoints);
+            this.addBattleLog("monster", "attack", attackPoints);
         },
         specialAttackMonster () {
             this.currentRound++
             const attackPoints = getRandomVal(10, 25);
             this.monsterHP -= attackPoints;
-            this.addLogMessage("player", "attack", attackPoints);
+            this.addBattleLog("player", "special-attack", attackPoints);
             this.attackPlayer();
         },
         healPlayer () {
@@ -47,14 +47,14 @@ const app = Vue.createApp({
                 this.playerHP += healValue;
             }
 
-            this.addLogMessage("player", "heal", healValue);
+            this.addBattleLog("player", "heal", healValue);
             this.attackPlayer();
         },
         playerSurrender () {
             this.winner = "monster";
         },
-        addLogMessage ( agent, action, actionPoints ) {
-            this.battleLog.unShift({ agent, action, actionPoints })
+        addBattleLog ( agent, action, actionPoints ) {
+            this.battleLog.unshift({ agent, action, actionPoints });
         }
     },
     computed: {
